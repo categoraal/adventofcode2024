@@ -30,3 +30,9 @@ for i in range(len(data)):
 
 print(p1)
 print(p2)
+
+import re
+# x = re.findall(r'mul\(\d+,\d+\)',data)
+print(sum([a*b for a,b in [[int(i) for i in re.findall(r'\d+',line)] for line in re.findall(r'mul\(\d+,\d+\)',open('3').read())]]))
+
+print(sum((int(i or 0)*int(j or 0) for i,j in re.findall(r'(?s)(?:(?<=don\'t\(\)).*?(?=do\(\)|$))|(?:mul\((\d+),(\d+)\))',data))))
