@@ -1,4 +1,5 @@
-import copy
+import time
+a = time.time()
 data = open('6').read().split('\n')
 
 kaart = {}
@@ -33,25 +34,20 @@ def path(p1):
             queue.append((r,c,dr,dc))
         else:
             queue.append((nr,nc,dr,dc))
-
         
 visited = path(p1=True)
-    
+print(time.time()-a)
 p2 = 0
-pos = list(kaart.keys())
 k2 = {} 
-for r,v in enumerate(data):
-    for c,v2 in enumerate(v):
-        k2[(r,c)] = v2
  
 for p in list(visited):
     dc,dc = (-1,0)
-    kaart = copy.copy(k2)
     if kaart[p] in '^#':continue
     kaart[p] = '#' 
     seen = set()
     seen.add(start)
-    queue = [(*start,-1,0)]
     p2 += (path(p1=False))
+    kaart[p] = '.'
 
 print(p2) 
+print(time.time()-a)
