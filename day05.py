@@ -61,3 +61,45 @@ for p in wrongpages:
     p2 += x
 
 print(p2)
+
+# import graphlib
+# p3 = 0
+# for page in wrongpages:
+#     graph = {}
+#     for p in page:
+#         sp = set(p)
+#         if p in rdict:
+#             a = set(rdict[p])
+#             graph[p] = sp&a
+#     ts = graphlib.TopologicalSorter(graph)
+#     x = tuple(ts.static_order())
+#     p3 += int(x[int((len(x)-1)/2)])
+
+# print(p3)
+# p4 = 0
+# cnt = 0
+# for page in pages:
+#     graph = {}
+#     sp = set(page)
+#     for p in page:
+#         if p in rdict:
+#             a = set(rdict[p])
+#             graph[p] = a
+#     ts = graphlib.TopologicalSorter(graph)
+#     x = tuple(ts.static_order())
+#     # print(page)
+#     # print(x)
+#     print(len(x),len(page))
+#     if page in wrongpages:
+#         print(page)
+#         print(x[::-1])
+#     if x == tuple(page[::-1]):
+#         p4 += int(page[int((len(page)-1)/2)])
+#         cnt += 1
+#         if page in wrongpages:
+#             print(page)
+#             print(x)
+#             print(graph)
+# print(p4)
+# print(cnt)
+# print(len(pages))
