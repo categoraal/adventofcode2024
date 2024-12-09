@@ -1,5 +1,4 @@
 data = open('9').read()
-
 n = []
 for i,v in enumerate(data):
     for k in range(int(v)):
@@ -65,7 +64,6 @@ for k in keys[::-1]:
             break
     for i in tr:
         emptys.remove(i)
-        del mmap[i]
 l = []
 for i in mmap:
     l += mmap[i]
