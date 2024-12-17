@@ -43,12 +43,10 @@ def findperimeter(x):
                     vis.add((nr,nc,ddr,ddc))
     return cnt
 
-p1 = 0
-p2 = 0
-for i,x in enumerate(kaart):
-    r,c = x
-    if (r,c) in seen: continue
-    reg,per = solve((r,c))
+p1 = p2 = 0
+for x in kaart:
+    if x in seen: continue
+    reg,per = solve(x)
     p1 += len(reg)*len(per)
     fences = findperimeter(per)
     p2 += len(reg)*fences
