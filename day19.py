@@ -18,9 +18,7 @@ def solve(x):
     return r
 p1 = p2= 0
 
-reducedcolors = reduce(colors)
 for design in designs:
-    # p1 += solve1(design,design,reducedcolors)
     n=solve(design)
     p2 += n
     p1 += 1 if n > 0 else 0
