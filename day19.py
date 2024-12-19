@@ -1,44 +1,28 @@
-from functools import cache
 colors,designs= open('19').read().strip().split('\n\n')
 
 colors = colors.split(', ')
 designs = designs.split('\n')
 
-def solve1(i,design,colors,f=False):
-    queue = [design]
-    while queue:
-        x = queue.pop(-1)
-        for c in colors:
-            if f and c == i: continue
-            if c == x: return 1
-            if x.startswith(c):
-                l = len(c)
-                queue.append((x[l:]))
-    return 0
-
-def reduce(x):
-    r = []
-    for i in x:
-        if solve1(i,i,colors,True) == 0:
-            r.append(i)
-    return r
-
-@cache
-def solve2(x):
+cache = {}
+def solve(x):
     r = 0
+    if x in cache:
+        return cache[x]    
     for c in colors:
         if c == x:
             r += 1
         if x.startswith(c):
             l = len(c)
-            r += solve2(x[l:])
+            r += solve(x[l:])
+    cache[x] = r
     return r
-
 p1 = p2= 0
 
 reducedcolors = reduce(colors)
 for design in designs:
-    p1 += solve1(design,design,reducedcolors)
-    p2 += solve2(design)
+    # p1 += solve1(design,design,reducedcolors)
+    n=solve(design)
+    p2 += n
+    p1 += 1 if n > 0 else 0
 print(p1)
 print(p2)
